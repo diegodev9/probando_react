@@ -1,13 +1,13 @@
 import './styles/App.css'
-import {useState} from "react";
-import {Square} from "./components/Square.jsx";
-import {TURNS} from "./constants.js";
-import {checkWinnerFrom, checkEndGame} from "./logic/board.js";
-import {WinnerModal} from "./components/WinnerModal.jsx";
-import confetti from "canvas-confetti";
-import {saveGameToStorage, resetGameStorage} from "./logic/storage/index.js";
+import { useState } from 'react'
+import { Square } from './components/Square.jsx'
+import { TURNS } from './constants.js'
+import { checkWinnerFrom, checkEndGame } from './logic/board.js'
+import { WinnerModal } from './components/WinnerModal.jsx'
+import confetti from 'canvas-confetti'
+import { saveGameToStorage, resetGameStorage } from './logic/storage/index.js'
 
-function App() {
+function App () {
   const [board, setBoard] = useState(() => {
     const boardFromLocalStorage = window.localStorage.getItem('board')
     if (boardFromLocalStorage) return JSON.parse(boardFromLocalStorage)
@@ -53,10 +53,10 @@ function App() {
   }
 
   return (
-    <main className={'board'}>
+    <main className='board'>
       <h1>Tic tac toe</h1>
       <button onClick={resetGame}>Reset del juego</button>
-      <section className={'game'}>
+      <section className='game'>
         {
           board.map((square, index) => {
             return (
@@ -71,7 +71,7 @@ function App() {
           })
         }
       </section>
-      <section className={'turn'}>
+      <section className='turn'>
         <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
         <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
       </section>
